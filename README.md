@@ -27,19 +27,19 @@ Use Simple Build Tool (SBT)
 
 ## Basic Use
 
-* 1. Download project
-* 2. Import project to IntelliJ
-* 3. Execute sbt shell in terminal or within IntelliJ:
+* Download project
+* Import project to IntelliJ
+* Execute sbt shell in terminal or within IntelliJ:
 
 ```
 sbt
 ```
-* 4. Build proyect. Execute compile on sbt
+* Build proyect. Execute compile on sbt
 
 ```
 compile
 ```
-* 3. Test suites. Execute test or testOnly on sbt
+* Test suites. Execute test or testOnly on sbt
 
 ```
 test
