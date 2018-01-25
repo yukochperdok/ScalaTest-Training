@@ -14,21 +14,20 @@ class PizzaTests extends FlatSpec{
   }
 
 
-  "A Pizza" should "have size equal 1 after to add a new topping" in {
+  "A Pizza" should "increase one-unit size after to add a new topping" in {
     val pizza = new Pizza
+    val originalSize = pizza.getToppings().size
     pizza.addTopping(greenOlives)
-    assert(pizza.getToppings.size === 1)
+    assert(originalSize + 1 === pizza.getToppings.size)
   }
 
 
-  it should "have size equal 0 after to remove a topping" in {
+  it should "decrease one-unit size after to remove a topping" in {
     val pizza = new Pizza
-
     pizza.addTopping(onions)
-    assert(pizza.getToppings.size === 1)
-
+    val originalSize = pizza.getToppings().size
     pizza.removeTopping(onions)
-    assert(pizza.getToppings.size === 0)
+    assert(originalSize - 1 === pizza.getToppings.size)
   }
 
 
@@ -36,10 +35,10 @@ class PizzaTests extends FlatSpec{
     val pizza = new Pizza
 
     pizza.addTopping(onions)
-    assert(pizza.getToppings.size === 1)
+    val firstSize = pizza.getToppings().size
 
     pizza.removeTopping(greenOlives)
-    assert(pizza.getToppings.size === 1)
+    assert(pizza.getToppings.size === firstSize)
   }
 
 
@@ -56,6 +55,6 @@ class PizzaTests extends FlatSpec{
     val pizza = new Pizza
     pizza.addTopping(onions)
     pizza.addTopping(greenOlives)
-    assert(pizza.getPrice === 4.3)
+    assert(pizza.getPrice === onions.price + greenOlives.price)
   }
 }

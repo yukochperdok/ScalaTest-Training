@@ -20,10 +20,10 @@ class SuiteTest4Exercise extends FlatSpec{
   "A New Pizza" should "have zero toppings" is (pending)
 
 
-  "A Pizza" should "have size equal 1 after to add a new topping" is (pending)
+  "A Pizza" should "increase one-unit size after to add a new topping" is (pending)
 
 
-  it should "have size equal 0 after to remove a topping" is (pending)
+  it should "decrease one-unit size after to remove a topping" is (pending)
 
 
   it should "not remove a topping that doesn't exist" is (pending)
