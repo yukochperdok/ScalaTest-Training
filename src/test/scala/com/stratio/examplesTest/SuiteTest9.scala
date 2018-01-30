@@ -108,7 +108,7 @@ class MyStackSpec extends FeatureSpec with GivenWhenThen with Matchers{
       And("the stack's size should decrease one unit")
       fullMyStack.size should === (initialSize - 1)
 
-      And("the the last element there should be")
+      And("there should be the last element")
       fullMyStack.size should !== (Nil)
     }
 
