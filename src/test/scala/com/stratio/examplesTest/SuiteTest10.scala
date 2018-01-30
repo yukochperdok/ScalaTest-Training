@@ -42,28 +42,30 @@ class FunctionMockSuite extends FlatSpec with Matchers with MockFactory{
 class ObjectMockTest extends FlatSpec with Matchers with MockFactory {
 
   "An order in stock" should "remove inventory" in {
-        val mockWarehouse = mock[Warehouse]
-        inSequence {
-          (mockWarehouse.hasInventory _) expects ("Talisker", 50) returning true
-          (mockWarehouse.remove _) expects ("Talisker", 50) once
-        }
+    val mockWarehouse = mock[Warehouse]
+    inSequence {
+      (mockWarehouse.hasInventory _) expects ("Talisker", 50) returning true
+      (mockWarehouse.remove _) expects ("Talisker", 50)
+    }
 
-        val order = new Order("Talisker", 50)
-        order.fill(mockWarehouse)
+    val order = new Order("Talisker", 50)
+    // Con expected mock necesitas llamar a los metodos mockeados. Sino fallara el test
+    order.fill(mockWarehouse)
 
-        order should be a ('filled)
-        // Otra opcion --> assert(order.isFilled)
+    order should be a ('filled)
+    // Otra opcion --> assert(order.isFilled)
   }
 
 
   "Out of stock" should "remove nothing" in {
-        val mockWarehouse = mock[Warehouse]
-        (mockWarehouse.hasInventory _) stubs (*, *) returning false anyNumberOfTimes()
+    val mockWarehouse = mock[Warehouse]
+    (mockWarehouse.hasInventory _) stubs (*, *) returning false
 
-        val order = new Order("Talisker", 50)
-        order.fill(mockWarehouse)
+    val order = new Order("Talisker", 50)
+    // Con stubbed mock no necesitas obligatoriamente llamar al metodo.
+    order.fill(mockWarehouse)
 
-        order should not be a ('filled)
-        // Otra opcion --> assert(!order.isFilled)
+    order should not be a ('filled)
+    // Otra opcion --> assert(!order.isFilled)
   }
 }

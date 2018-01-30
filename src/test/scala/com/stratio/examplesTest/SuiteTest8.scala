@@ -22,7 +22,8 @@ class MatcherEqualitySuite extends FlatSpec with Matchers{
   result should equal (3) // Por defecto, testea left == right, excepto para arrays
   result should be (3)    // Por defecto, testea left == right, excepto para arrays
   result should === (3)   // Por defecto, testea left === right, excepto para arrays.
-                          // operator ===, compara el tipado de left y right en tiempo de compilacion, luego compara el contenido.
+                          // operator ===, compara el tipado de left y right en tiempo de compilacion,
+                          // luego compara el contenido.
 
   result shouldEqual 3 // Otras alternativas sin uso de parentesis
   result shouldBe 3
@@ -195,7 +196,7 @@ class MatcherBooleanSuite extends FlatSpec with Matchers{
       BePropertyMatchResult(left.isFile, "file") // No tiene porque cumplir el patron isProperty
   }
   val file = new FileBePropertyMatcher
-  val temp2 = new File("file.txt")
+  val temp2 = new File("/tmp2")
   temp2 should not be file //!temp2.isFile (via property)
 }
 
@@ -485,14 +486,6 @@ class MatcherLogicalExpressionsSuite extends FlatSpec with Matchers{
 
   val option = None
   option should (equal (Some(List(1, 2, 3))) or be (None))
-
-  val string = "fum"
-  string should (
-    equal ("fee") or
-      equal ("fie") or
-      equal ("foe") or
-      equal ("fum")
-    )
 }
 
 class MatcherPatternSuite extends FlatSpec with Matchers{
@@ -569,4 +562,8 @@ class MatcherComposeSuite extends FlatSpec with Matchers{
 
   // Pero no se puede meter un not:
   // "7" should not beAsIntsGreaterThan ("8")
+
+  //Incluso sin componer
+  5 shouldBe g ("5")
+
 }

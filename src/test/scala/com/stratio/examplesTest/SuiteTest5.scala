@@ -12,7 +12,7 @@ import org.scalatest.tags.Slow
   * O para excluirlos:
   *
   *     testOnly -- -l ListTestTag
-  *     testOnly -- -n org.scalatest.tags.Slow
+  *     testOnly -- -l org.scalatest.tags.Slow
   *
   * O incluso solo los de una specificacion excluyendo los que consideres:
   *

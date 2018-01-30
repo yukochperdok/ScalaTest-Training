@@ -41,14 +41,6 @@ class FixtureMethodsSpec extends FlatSpec {
 
 class FixtureObjectsSpec extends FlatSpec {
 
-  override def withFixture(test: NoArgTest) = { // Define a shared fixture
-    // Shared setup (run at beginning of each test)
-    try test()
-    finally {
-      // Shared cleanup (run at end of each test)
-    }
-  }
-
   trait Builder {
     val builder = new StringBuilder("ScalaTest is ")
   }
